@@ -1,13 +1,14 @@
 import { Stack, Link } from 'expo-router'
 import { View, Text, StyleSheet } from "react-native";
 
-import React, { useEffect } from "react"; // Importa React y useEffect
+import React, { useEffect, useState } from "react"; // Importa React y useEffect
 // import LinearGradient from 'react-native-linear-gradient';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import * as SplashScreen from 'expo-splash-screen'; // Importa expo-splash-screen
 
 import { useFonts } from "expo-font";
+import { Input } from './components/input';
 
 // Importar la fuente Poppins
 
@@ -30,6 +31,8 @@ const styles = StyleSheet.create({
     }
 })
 export default function Home() {
+
+    const [nombre, setNombre] = useState('')
 
     let [fontsLoaded] = useFonts({
         'Ubu': require('./assets/fonts/Ubuntu-Medium.ttf'),
@@ -54,6 +57,16 @@ export default function Home() {
         return null; // No necesitas retornar nada aquí, ya que SplashScreen se encargará de mostrar la pantalla de presentación
     }
 
+    const onBlur = ({ name }) => {
+        console.log({ event: 'onBlur', name })
+    }
+    const onFocus = ({ name }) => {
+        console.log({ event: 'onFocus', name })
+    }
+    const onChange = ({ text, name }) => {
+        console.log({ event: 'onChange', text, name })
+        setNombre(text)
+    }
     return (
         <LinearGradient
             colors={['rgba(55,236,186,1)', 'rgba(114,175,211,1)']}
@@ -68,7 +81,14 @@ export default function Home() {
             <Text style={styles.text}>BIENVENIDO A WIKIPADEL🥎</Text>
             <Text style={styles.maintenance}>🚧🚦En Mantenimiento🚦🚧</Text>
             <Link href={'/shop/categories'}>Go to Categories</Link>
+            <Input
+                name='nombre'
+                onBlur={onBlur}
+                onFocus={onFocus}
+                onChange={onChange}
+                placeholder='Your name'
+                value={nombre}
+            />
         </LinearGradient>
-
     )
 }

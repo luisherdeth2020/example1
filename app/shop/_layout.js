@@ -5,7 +5,7 @@ export default function Layout() {
     return (
         <Tabs screenOptions={{
             headerShown: false,
-            headerTitle: 'Pepe',
+            // headerTitle: 'Pepe',
             tabBarActiveTintColor: '#22356f',
             headerTitleAlign: "center",
             tabBarLabelStyle: {
