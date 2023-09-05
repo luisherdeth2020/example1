@@ -6,16 +6,14 @@ export default function Layout() {
 		<Tabs
 			screenOptions={{
 				headerShown: false,
-				// headerTitle: 'Pepe',
+				headerTitle: "Pepe",
 				tabBarActiveTintColor: "#22356f",
 				headerTitleAlign: "center",
 				tabBarLabelStyle: {
 					fontSize: 12,
-					color: "#526D82",
 				},
 				tabBarStyle: {
 					backgroundColor: "#68E0E1",
-					// backgroundColor: "#544B81",
 				},
 			}}
 		>
